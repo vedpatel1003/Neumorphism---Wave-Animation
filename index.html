@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="style.css">
+<div id="button">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+  </svg>
+</div>
+<script>
+  const $button = document.getElementById("button");
+
+let debounce = false;
+$button.addEventListener("click", () => {
+  if (debounce) return;
+  debounce = true;
+  buttonAnimate();
+  createWave();
+});
+
+const buttonAnimate = () => {
+  $button.classList.add("clicked");
+  setTimeout(() => {
+    $button.classList.remove("clicked");
+    debounce = false;
+  }, 700);
+};
+
+const createWave = () => {
+  const wave = document.createElement("div");
+  wave.classList.add("wave");
+  document.body.appendChild(wave);
+  setTimeout(() => wave.remove(), 7000);
+};
+
+</script>
